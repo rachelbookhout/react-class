@@ -90,7 +90,7 @@
 
 
 </body>
-  <script type="text/babel">
+<script type="text/babel">
 var person = {
   name: 'Chris Castig',
   location: 'Brooklyn, New York',
@@ -118,27 +118,56 @@ var person = {
     }
   ]
 }
+class Photo extends React.Component{
+  render() {
+    return(
+       <div className="photo">
+          <img src="images/chris-merica.png" alt="Photo" width="300px" height="225px"/>
+        </div>
+    )
+  }
+}
 
-ReactDOM.render(
-   <div className="card">
-      <div className="photo">
-        <img src="images/chris-merica.png" alt="Photo" width="300px" height="225px"/>
-      </div>
+class Bio extends React.Component{
+  render() {
+    return(
       <div className="bio">
         <h1 className="name">Chris.name</h1>
         <h2 className="location">Brooklyn, New York</h2>
         <div className="occupation">
-          <p>Protecting Freedom @ onemonthedu</p>
+        <p>Protecting Freedom @ onemonthedu</p>
         </div>
-      </div>
-      <div className="updates">
+        </div>
+    )
+  }
+}
+
+class Updates extends React.Component{
+  render() {
+     return(
+        <div className="updates">
          <ul>
            <li className="update">Updates</li>
            <li className="update">Updates</li>
          </ul>
       </div>
-     </div>,
- document.getElementById('app')
-  );
+     )
+   }
+ }
+
+class Card extends React.Component {
+  render() {
+    return(
+<div className="card">
+      <Photo />
+      <Bio />
+     <Updates />
+     </div>
+      )
+  }
+}
+
+
+ReactDOM.render(<Card />, document.getElementById('app'));
   </script>
 </html>
