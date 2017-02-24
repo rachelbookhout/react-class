@@ -29,7 +29,7 @@ class Photo extends React.Component{
   render() {
     return(
        <div className="photo">
-          <img src="images/chris-merica.png" alt="Photo" width="300px" height="225px"/>
+          <img src={this.props.image} alt="Photo" width="300px" height="225px"/>
         </div>
     )
   }
@@ -39,10 +39,10 @@ class Bio extends React.Component{
   render() {
     return(
       <div className="bio">
-        <h1 className="name">Chris.name</h1>
-        <h2 className="location">Brooklyn, New York</h2>
+        <h1 className="name">{this.props.name}</h1>
+        <h2 className="location">{this.props.location}</h2>
         <div className="occupation">
-        <p>Protecting Freedom @ onemonthedu</p>
+        <p>{this.props.occupation}</p>
         </div>
         </div>
     )
@@ -66,8 +66,8 @@ class Card extends React.Component {
   render() {
     return(
 <div className="card">
-      <Photo />
-      <Bio />
+      <Photo image={"images/chris-merica.png"}/>
+      <Bio name={"Rachel"} location={"Boston"} occupation={"Slacking off"} />
      <Updates />
      </div>
       )
