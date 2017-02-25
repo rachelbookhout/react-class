@@ -1,35 +1,30 @@
 var person = {
-  name: 'Chris Castig',
-  location: 'Brooklyn, New York',
+  name: 'Rachel Bookhout',
+  location: 'Boston',
   occupation: {
-    title: 'Protecting Freedom',
-    employer: '@onemonthedu'
+    employer: '@DK'
   },
   photo: './images/chris-merica.png',
   updates: [
     {
-      platform: 'twitter',
-      status: 'I\'m happy, hope you\'re happy too!'
+      date: '2017/01/02',
+      quote: 'I have not failed. I\'ve just found 10,000 ways that won\'t work'
     },
     {
-      platform: 'twitter',
-      status: 'The better the singer\'s voice, the harder it is to hear what they\'re saying'
+      date: '2017/01/19',
+      quote: 'It is never too late to be what you might have been'
     },
     {
-      platform: 'twitter',
-      status: 'Fear makes the wolf look bigger'
+      date: '2017/02/14',
+      quote: 'Our deepest fear is not that we are inadequate. Our deepest fear is that we are powerful beyond measure. It is our light, not our darkness that most frightens us. We ask ourselves, \'Who am I to be brilliant, gorgeous, talented, fabulous?\' Actually, who are you not to be? You are a child of God. Your playing small does not serve the world. There is nothing enlightened about shrinking so that other people won\'t feel insecure around you. We are all meant to shine, as children do. We were born to make manifest the glory of God that is within us. It\'s not just in some of us; it\'s in everyone. And as we let our own light shine, we unconsciously give other people permission to do the same. As we are liberated from our own fear, our presence automatically liberates others.'
     },
-    {
-      platform: 'facebook',
-      status: 'If you\’re working on something that you think is going to get accomplished in this lifetime then you’re not thinking big enough'
-    }
   ]
 }
 class Photo extends React.Component{
   render() {
     return(
        <div className="photo">
-          <img src={this.props.image} alt="Photo" width="300px" height="225px"/>
+          <img src={this.props.image} alt="Photo" width="250px" height="225px"/>
         </div>
     )
   }
@@ -55,7 +50,8 @@ class Updates extends React.Component{
     return this.props.updates.map(function(update,index){
       return (
           <li className="update" key={index}>
-          {update.status}
+           <p className="date" key={index}>{update.date} </p>
+          {update.quote}
           </li>
         )
     });
