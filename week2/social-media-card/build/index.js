@@ -51,6 +51,8 @@ class Bio extends React.Component {
         React.createElement(
           'p',
           null,
+          this.props.occupation.title,
+          ' at ',
           this.props.occupation
         )
       )
@@ -59,6 +61,17 @@ class Bio extends React.Component {
 }
 
 class Updates extends React.Component {
+
+  updates() {
+    return this.props.updates.map(function (update, index) {
+      return React.createElement(
+        'li',
+        { className: 'update', key: index },
+        update.status
+      );
+    });
+  }
+
   render() {
     return React.createElement(
       'div',
@@ -66,16 +79,7 @@ class Updates extends React.Component {
       React.createElement(
         'ul',
         null,
-        React.createElement(
-          'li',
-          { className: 'update' },
-          'Updates'
-        ),
-        React.createElement(
-          'li',
-          { className: 'update' },
-          'Updates'
-        )
+        this.updates()
       )
     );
   }
@@ -86,9 +90,9 @@ class Card extends React.Component {
     return React.createElement(
       'div',
       { className: 'card' },
-      React.createElement(Photo, { image: "images/chris-merica.png" }),
-      React.createElement(Bio, { name: "Rachel", location: "Boston", occupation: "Slacking off" }),
-      React.createElement(Updates, null)
+      React.createElement(Photo, { image: person.photo }),
+      React.createElement(Bio, { name: person.name, location: person.location, occupation: person.occupation.employer }),
+      React.createElement(Updates, { updates: person.updates })
     );
   }
 }
