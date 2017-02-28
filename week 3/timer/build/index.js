@@ -1,5 +1,10 @@
 class PomodoroTimer extends React.Component {
 
+  constructor() {
+    super();
+    this.state = { timeElapsed: 0 };
+  }
+
   totalTime(timeOne, timeTwo) {
     return timeOne + timeTwo;
   }
@@ -18,7 +23,9 @@ class PomodoroTimer extends React.Component {
       this.totalTime(this.props.workingTime, this.props.restingTime),
       ' minutes.',
       React.createElement('br', null),
-      'There are 88 seconds elapsed.'
+      'There are ',
+      this.state.timeElapsed,
+      ' seconds elapsed.'
     );
   }
 }
