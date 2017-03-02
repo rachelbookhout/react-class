@@ -9,23 +9,42 @@ class PomodoroTimer extends React.Component {
     return timeOne + timeTwo;
   }
 
+  componentDidMount() {
+    this.interval = setInterval(this.elapseTime.bind(this), 1000);
+    this.setState({ start: new Date() });
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
+  elapseTime() {
+    var timeElapsed = Math.floor((new Date() - this.state.start) / 1000);
+    this.setState({ timeElapsed: timeElapsed });
+    // if time elapsed = 25 minutes => alert
+
+    if (this.state.timeElapsed >= this.props.workingTime * 60) {
+      clearInterval(this.interval);
+      alert("Time for a break");
+    }
+  }
   render() {
     return React.createElement(
-      'div',
+      "div",
       null,
-      'This timer runs for ',
+      "This timer runs for ",
       this.props.workingTime,
-      ' minutes, followed by a rest of ',
+      " minutes, followed by a rest of ",
       this.props.restingTime,
-      ' minutes.',
-      React.createElement('br', null),
-      'For a total time of ',
+      " minutes.",
+      React.createElement("br", null),
+      "For a total time of ",
       this.totalTime(this.props.workingTime, this.props.restingTime),
-      ' minutes.',
-      React.createElement('br', null),
-      'There are ',
+      " minutes.",
+      React.createElement("br", null),
+      "There are ",
       this.state.timeElapsed,
-      ' seconds elapsed.'
+      " seconds elapsed."
     );
   }
 }

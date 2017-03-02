@@ -9,7 +9,25 @@ class PomodoroTimer extends React.Component {
     return timeOne + timeTwo
   }
 
+  componentDidMount(){
+    this.interval = setInterval(this.elapseTime.bind(this),1000);
+    this.setState({start: new Date()});
+  }
 
+  componentWillUnmount(){
+    clearInterval(this.interval);
+  }
+
+  elapseTime(){
+    var timeElapsed = Math.floor((new Date() - this.state.start) /1000);
+    this.setState({timeElapsed: timeElapsed});
+    // if time elapsed = 25 minutes => alert
+
+    if (this.state.timeElapsed >= this.props.workingTime * 60){
+      clearInterval(this.interval);
+      alert("Time for a break");
+    }
+  }
   render(){
     return(
       <div>This timer runs for {this.props.workingTime} minutes,
