@@ -2,7 +2,7 @@ class PomodoroTimer extends React.Component {
 
   constructor() {
     super();
-    this.state = { timeElapsed: 0 };
+    this.state = { timeElapsed: 0, countdown: 1500, counter: 0 };
   }
 
   totalTime(timeOne, timeTwo) {
@@ -19,32 +19,67 @@ class PomodoroTimer extends React.Component {
   }
 
   elapseTime() {
+
+    // minutes less than 10 shows as 1 ** FIX **
     var timeElapsed = Math.floor((new Date() - this.state.start) / 1000);
-    this.setState({ timeElapsed: timeElapsed });
-    // if time elapsed = 25 minutes => alert
+    var countdown = 1500 - timeElapsed;
+    var min = Math.floor(countdown / 60);
+    var sec = Math.floor(countdown % 60);
+    var counter = min + ':' + sec;
+    this.setState({ timeElapsed: timeElapsed, countdown: countdown, counter: counter });
 
     if (this.state.timeElapsed >= this.props.workingTime * 60) {
       clearInterval(this.interval);
       alert("Time for a break");
     }
   }
+
   render() {
     return React.createElement(
-      "div",
+      'div',
       null,
-      "This timer runs for ",
-      this.props.workingTime,
-      " minutes, followed by a rest of ",
-      this.props.restingTime,
-      " minutes.",
-      React.createElement("br", null),
-      "For a total time of ",
-      this.totalTime(this.props.workingTime, this.props.restingTime),
-      " minutes.",
-      React.createElement("br", null),
-      "There are ",
-      this.state.timeElapsed,
-      " seconds elapsed."
+      React.createElement(
+        'form',
+        { className: 'countdown', name: 'countDown' },
+        React.createElement(
+          'div',
+          { name: 'daysLeft' },
+          React.createElement(
+            'h3',
+            null,
+            this.state.counter
+          )
+        ),
+        React.createElement('hr', { className: 'soft' }),
+        React.createElement(
+          'h3',
+          null,
+          'Minutes Left'
+        ),
+        React.createElement('hr', { className: 'soft' }),
+        React.createElement(
+          'span',
+          { className: 'bottom_time' },
+          this.state.timeElapsed,
+          ' seconds worked'
+        )
+      ),
+      React.createElement(
+        'p',
+        null,
+        'This timer runs for ',
+        this.props.workingTime,
+        ' minutes followed by a rest of ',
+        this.props.restingTime,
+        ' minutes.'
+      ),
+      React.createElement(
+        'p',
+        null,
+        'For a total time of ',
+        this.totalTime(this.props.workingTime, this.props.restingTime),
+        ' minutes.'
+      )
     );
   }
 }
