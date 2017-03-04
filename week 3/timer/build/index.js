@@ -71,16 +71,14 @@ class PomodoroTimer extends React.Component {
         null,
         'This timer runs for ',
         this.props.workingTime,
-        ' minutes followed by a rest of ',
+        ' minutes. When the time is up, rest for ',
         this.props.restingTime,
         ' minutes.'
       ),
       React.createElement(
         'p',
         null,
-        'For a total time of ',
-        this.totalTime(this.props.workingTime, this.props.restingTime),
-        ' minutes.'
+        'When you are ready to restart, click the alert and refresh!'
       )
     );
   }

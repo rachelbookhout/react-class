@@ -48,8 +48,8 @@ class PomodoroTimer extends React.Component {
           <hr className='soft' />
           <span className='bottom_time'>{this.state.timeElapsed} seconds worked</span>
         </form>
-      <p>This timer runs for {this.props.workingTime} minutes followed by a rest of {this.props.restingTime} minutes.</p>
-      <p>For a total time of {this.totalTime(this.props.workingTime, this.props.restingTime)} minutes.</p>
+      <p>This timer runs for {this.props.workingTime} minutes. When the time is up, rest for {this.props.restingTime} minutes.</p>
+      <p>When you are ready to restart, click the alert and refresh!</p>
       </div>
 
       )
