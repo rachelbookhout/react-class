@@ -22,7 +22,7 @@ class PomodoroTimer extends React.Component {
   elapseTime(){
 
     var timeElapsed = Math.floor((new Date() - this.state.start) /1000);
-    var countdown = 1500 - timeElapsed;
+    var countdown = (this.props.workingTime * 60) - timeElapsed;
     var min = Math.floor(countdown / 60);
     var sec = Math.floor(countdown % 60);
      if (sec < 10){
