@@ -21,11 +21,13 @@ class PomodoroTimer extends React.Component {
 
   elapseTime(){
 
-    // minutes less than 10 shows as 1 ** FIX **
     var timeElapsed = Math.floor((new Date() - this.state.start) /1000);
     var countdown = 1500 - timeElapsed;
     var min = Math.floor(countdown / 60);
     var sec = Math.floor(countdown % 60);
+     if (sec < 10){
+      sec = '0' + sec.toString();
+    }
     var counter = min + ':' + sec;
     this.setState({timeElapsed: timeElapsed, countdown: countdown, counter:counter});
 
