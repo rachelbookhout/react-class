@@ -45,7 +45,7 @@ class PomodoroTimer extends React.Component {
         { className: 'countdown', name: 'countDown' },
         React.createElement(
           'div',
-          { name: 'daysLeft' },
+          { name: 'timeLeft' },
           React.createElement(
             'h3',
             null,

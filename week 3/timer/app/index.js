@@ -42,7 +42,7 @@ class PomodoroTimer extends React.Component {
     return(
       <div>
         <form className='countdown' name='countDown'>
-          <div name='daysLeft'><h3>{this.state.counter}</h3></div>
+          <div name='timeLeft'><h3>{this.state.counter}</h3></div>
           <hr className='soft' />
           <h3>Minutes Left</h3>
           <hr className='soft' />
